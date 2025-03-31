@@ -1,5 +1,4 @@
 #include "http_server.h"
-#include <iostream>
 
 int main() {
     simple_http_server::HttpServer server("0.0.0.0", 8080);

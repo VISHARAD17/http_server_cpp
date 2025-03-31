@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -std=c++17 -Wall
 TARGET = http_server
 BUILD_DIR = build
-SRC_DIR = .
+SRC_DIR = src
 
 SOURCES = main.cpp http_message.cpp http_server.cpp
 OBJECTS = $(patsubst %.cpp, $(BUILD_DIR)/%.o, $(SOURCES))
