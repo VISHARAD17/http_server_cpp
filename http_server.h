@@ -17,12 +17,14 @@ public:
     void start();
 
 private:
+    static const int MAX_CONNECTIONS = 1024;
     std::string host_;
     int port_;
     int server_fd_;
+    int kq_;
     std::unordered_map<std::string, std::unordered_map<HttpMethod, std::function<HttpResponse(const HttpRequest&)>>> handlers_;
 
-    void handle_client(int client_fd);
+    void process_events();
 };
 
 } // namespace simple_http_server

@@ -27,7 +27,7 @@ public:
 
     HttpRequest() : method(HttpMethod::UNKNOWN), uri("/"), version("HTTP/1.1") {}
     bool parse(const std::string& raw_request);
-    void log() const; // to print all request
+    void log() const;
 };
 
 class HttpResponse {

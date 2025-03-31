@@ -47,18 +47,15 @@ http-server/
         Total Number of Cores: 8 (4 performance and 4 efficiency)
         Memory: 8 GB
     ```
-- results: run this cmd to benchmark the server `~ wrk -t4 -c100 -d10s http://localhost:8080/`
+- results: run this cmd to benchmark the server `wrk -t10 -c500 -d60s http://0.0.0.0:8080/ `
     ``` cmd
-    Running 10s test @ http://localhost:8080/
-    4 threads and 100 connections
+    10 threads and 500 connections
     Thread Stats   Avg      Stdev     Max   +/- Stdev
-        Latency   545.93us    5.13ms 173.84ms   99.46%
-        Req/Sec     7.63k     3.47k   16.95k    67.94%
-    299821 requests in 10.08s, 22.30MB read
-    Socket errors: connect 0, read 307729, write 31, timeout 0
-    Requests/sec:  29736.08
-    Transfer/sec:      2.21MB
-
+        Latency     8.92ms    9.07ms 472.84ms   99.69%
+        Req/Sec     5.83k   260.17     6.89k    94.80%
+    3480746 requests in 1.00m, 338.59MB read
+    Requests/sec:  57995.56
+    Transfer/sec:      5.64MB
     ```
     As we can see, server is able to handle more than 30k requests per second
 
