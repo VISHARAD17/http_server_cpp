@@ -68,6 +68,7 @@ void HttpServer::handle_client(int client_fd) {
 
     HttpRequest request;
     request.parse(buffer);
+    request.log();
 
     HttpResponse response;
     auto uri_handlers = handlers_.find(request.uri);

@@ -1,5 +1,6 @@
 #include "http_message.h"
 #include <sstream>
+#include <iostream>
 using namespace std;
 
 namespace simple_http_server {
@@ -30,6 +31,33 @@ bool HttpRequest::parse(const string& raw_request) {
         }
     }
     return true;
+}
+
+void HttpRequest::log() const {
+    // Get current time
+    std::time_t now = std::time(nullptr);
+    char time_str[26];
+    ctime_r(&now, time_str);
+    time_str[24] = '\0'; // Remove newline from ctime_r
+
+    // Convert method to string
+    std::string method_str;
+    switch (method) {
+        case HttpMethod::GET: method_str = "GET"; break;
+        case HttpMethod::HEAD: method_str = "HEAD"; break;
+        default: method_str = "UNKNOWN"; break;
+    }
+
+    // Log request line
+    cout << "------------------------------------------------------------------------ \n";
+    cout << "[" << time_str << "] " << method_str << " " << uri << " " << version << "\n";
+
+    // Log headers
+    for (const auto& [key, value] : headers) {
+        cout << "[" << time_str << "] Header: " << key << ": " << value << "\n";
+    }
+
+    cout << "------------------------------------------------------------------------ \n";
 }
 
 void HttpResponse::set_header(const string& key, const string& value) {
